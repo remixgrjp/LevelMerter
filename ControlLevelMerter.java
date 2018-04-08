@@ -12,9 +12,9 @@
 //		10 / Math.log(10) == 20 / Math.log(10) / 2
 //		Math.log( x ) でもあまり変わらない
 //	
-//	javac ControlLevelMerter.java
+//	javac -encoding UTF-8 ControlLevelMerter.java
 //	java ControlLevelMerter
-//	jar cvfm LevelMerterDEMO.jar manifestname.txt *.class image\*.gif
+//	jar cvfm LevelMerter.jar manifestname.txt *.class image\*.gif
 //
 
 public class ControlLevelMerter
@@ -22,6 +22,7 @@ public class ControlLevelMerter
 {
 	static private String strLicence = "THANKYOU";
 	static private boolean isTrial = true;
+	static private java.awt.Frame frame;
 	
 	LevelMerter canvas;
 	javax.sound.sampled.TargetDataLine targetDataLine = null;
@@ -78,11 +79,15 @@ public class ControlLevelMerter
 					if( System.currentTimeMillis() > lLimit + 5000 )
 						break;
 			}
+		}catch( java.lang.IllegalArgumentException exception ){
+			exception.printStackTrace( System.err );
+			new DialogCustom( frame, "録音デバイスを準備してください。" );
 		}catch( Exception exception ){
 			exception.printStackTrace( System.err );
 		}finally{
 			// TargetDataLineを閉じる
-			targetDataLine.close();
+			if( null != targetDataLine )
+				targetDataLine.close();
 		}
 	}
 	
@@ -104,8 +109,8 @@ public class ControlLevelMerter
 	
 	public static void main( String args[] )
 	{
-		String strTitle = "レベルメーター Ver1.0";
-		java.awt.Frame frame = new java.awt.Frame( strTitle );
+		String strTitle = "レベルメーター Ver1.1";
+		frame = new java.awt.Frame( strTitle );
 		try{
 			java.util.Properties properties = new java.util.Properties();
 			java .io.File file = new java .io.File( "LevelMerter.ini" );
