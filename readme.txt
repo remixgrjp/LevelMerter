@@ -33,7 +33,7 @@
 
 ■送金方法
 	LevelMerterライセンス購入フォーム
-	http://www.remix.gr.jp/service/contact/LevelMerter.html
+	https://www.remix.asia/service/contact/?action_Form=1&app=LevelMerter
 	で、エントリーしてください。お振込先銀行口座をお知らせし、ご入金確認後ライ
 	センスキーを発行・返信いたします。
 
